@@ -1,0 +1,30 @@
+# machine specific git config
+[include]
+  path = ~/.gitconfig-local
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+
+[init]
+  defaultBranch = main
+
+[credential]
+  helper = cache
+
+[pull]
+  rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[alias]
+  outgoing = log --pretty=oneline --abbrev-commit --graph @{u}..
+  incoming = !git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}
+  ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
