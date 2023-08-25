@@ -160,5 +160,8 @@ export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 # load rtx
 eval "$(rtx activate zsh)"
 
+# ugly hack to make zsh find starship installation of rtx
+cd $PWD
+
 # load StarShip
 eval "$(starship init zsh)"
