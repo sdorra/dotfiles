@@ -25,3 +25,7 @@ set background=dark
 " colorscheme
 colorscheme gruvbox
 " colorscheme molokai
+
+" gpg
+let g:GPGPreferArmor=1
+let g:GPGDefaultRecipients=["0x13B13D4C8A9350A1"]
