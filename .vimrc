@@ -22,6 +22,33 @@ set title
 "set visualbell
 set mouse+=a
 set background=dark
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Install plugins
+call plug#begin()
+
+" Install colorschemes
+Plug 'morhetz/gruvbox'
+Plug 'nordtheme/vim'
+
+" Encrypt and decrpt gpg files
+Plug 'jamessan/vim-gnupg'
+
+" EditorConfig support
+Plug 'editorconfig/editorconfig-vim'
+
+" Statusbar
+Plug 'itchyny/lightline.vim'
+
+call plug#end()
+
+" === plugin configuration
+
 " colorscheme
 colorscheme gruvbox
 " colorscheme molokai
