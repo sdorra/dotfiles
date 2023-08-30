@@ -29,6 +29,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 " Install plugins
 call plug#begin()
 
@@ -49,10 +54,11 @@ call plug#end()
 
 " === plugin configuration
 
-" colorscheme
-colorscheme gruvbox
-" colorscheme molokai
+" colorschem
+silent! colorscheme gruvbox
 
 " gpg
-let g:GPGPreferArmor=1
-let g:GPGDefaultRecipients=["0x13B13D4C8A9350A1"]
+if has_key(plugs, "gpg")
+  let g:GPGPreferArmor=1
+  let g:GPGDefaultRecipients=["0x13B13D4C8A9350A1"]
+endif
