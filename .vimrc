@@ -23,6 +23,15 @@ set title
 set mouse+=a
 set background=dark
 
+"fix identation on paste inside tmux
+"https://vi.stackexchange.com/a/28284
+if &term =~ "screen"
+  let &t_BE = "\e[?2004h"
+  let &t_BD = "\e[?2004l"
+  exec "set t_PS=\e[200~"
+  exec "set t_PE=\e[201~"
+endif
+
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
